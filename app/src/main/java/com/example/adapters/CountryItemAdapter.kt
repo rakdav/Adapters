@@ -2,8 +2,9 @@ package com.example.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.core.graphics.drawable.toDrawable
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.adapters.databinding.CountryItemBinding
 
@@ -20,6 +21,9 @@ RecyclerView.Adapter<CountryItemAdapter.CountryItemViewHolder>()
             binding.flagImage.setImageResource(country.flag)
             binding.name.text=country.name
             binding.capital.text=country.capital
+            binding.cv.setOnClickListener{
+                Toast.makeText(binding.root.context,country.name,Toast.LENGTH_LONG).show()
+            }
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryItemViewHolder {
