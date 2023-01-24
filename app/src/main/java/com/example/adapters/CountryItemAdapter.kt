@@ -1,6 +1,7 @@
 package com.example.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +23,12 @@ RecyclerView.Adapter<CountryItemAdapter.CountryItemViewHolder>()
             binding.name.text=country.name
             binding.capital.text=country.capital
             binding.cv.setOnClickListener{
-                Toast.makeText(binding.root.context,country.name,Toast.LENGTH_LONG).show()
+                val intent=Intent(binding.root.context,CountryActivity::class.java)
+                intent.putExtra(CountryActivity.NAME_COUNTRY,country.name)
+                intent.putExtra(CountryActivity.CAPITAL_COUNTRY,country.capital)
+                intent.putExtra(CountryActivity.FLAG_COUNTRY,country.flag)
+                intent.putExtra(CountryActivity.DESC_COUNTRY,country.Description)
+                binding.root.context.startActivity(intent)
             }
         }
     }
